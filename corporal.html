@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DARYMAKEUP - Corporales</title>
+  <style>
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #000;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+header {
+  position: relative;
+  padding: 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 100px;
+  height: auto;
+}
+
+.subtitulo h2 {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #ccc;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  max-width: 1300px;
+  margin: auto;
+  gap: 30px;
+  padding: 30px;
+  justify-items: center;
+}
+
+@media (min-width: 1300px) {
+  .galeria {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.producto {
+  background-color: #222;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 220px;
+}
+
+.producto img {
+  width: 100%;
+  height: 280px; /* Imagen más alta */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.precio {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #ff4081;
+}
+
+.descripcion {
+  font-size: 1rem;
+  margin-top: 5px;
+  color: #ccc;
+}
+
+.boton-whatsapp {
+  margin-top: 10px;
+  background-color: #25D366;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.boton-whatsapp:hover {
+  background-color: #1ebe5b;
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .logo {
+    width: 80px;
+    top: 15px;
+    right: 15px;
+  }
+
+  .galeria {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .producto {
+    max-width: 180px;
+  }
+
+  .producto img {
+    height: 240px; /* Más alta en pantallas medianas */
+  }
+}
+    .mensaje-inferior-derecha {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #111;
+      color: gold;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: 'Arial', sans-serif;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+      z-index: 1000;
+    }
+
+@media (max-width: 480px) {
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 15px;
+  }
+
+  .producto {
+    max-width: 100%;
+  }
+
+  .producto img {
+    height: 200px; /* Más alta en móviles */
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>DARYMAKEUP</h1>
+    <img src="https://i.ibb.co/Z6gvWL0n/LOGO-MIO.jpg" alt="Logo de DARYMAKEUP" class="logo">
+  </header>
+
+  <section class="subtitulo">
+    <h2>Cuidado Corporales</h2>
+        <a href="index.html" style="
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #ff4081;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+">⬅ Volver al inicio</a>
+  </section>
+
+  <section class="galeria">
+    <!-- Producto 1 -->
+    <div class="producto">
+      <img src="https://i.ibb.co/nNmqxjGL/mantequilla-corporal-de-brillos.webp" alt="Producto 1">
+      <p class="precio">$15.000</p>
+      <p class="descripcion">MANTEQUILLA CORPORAL DE BRILLITOS.</p>
+      <button class="boton-whatsapp">Comprar por WhatsApp</button>
+    </div>
+
+    <!-- Producto 2 -->
+    <div class="producto">
+      <img src="https://i.ibb.co/qYyx6Bj8/mantequilla-corporal-booy-butter.webp" alt="Producto 2">
+      <p class="precio">$15.000</p>
+      <p class="descripcion">MANTEQUILLA CORPORAL BOOY BUTTER.</p>
+      <button class="boton-whatsapp">Comprar por WhatsApp</button>
+    </div>
+
+    <!-- Producto 3 -->
+    <div class="producto">
+      <img src="https://i.ibb.co/HLNg5dH1/mantequilla-corporal.webp" alt="Producto 3">
+      <p class="precio">$18.000</p>
+      <p class="descripcion">MANTEQUILLA CORPORAL.</p>
+      <button class="boton-whatsapp">Comprar por WhatsApp</button>
+    </div>
+
+    <!-- Producto 4 -->
+    <div class="producto">
+      <img src="https://i.ibb.co/HTZY0jd2/jabon-extracto-de-arroz-100g.webp" alt="Producto 4">
+      <p class="precio">$10.000</p>
+      <p class="descripcion">JABON EXTRACTO DE ARROZ 100G.</p>
+      <button class="boton-whatsapp">Comprar por WhatsApp</button>
+    </div>
+
+  </section>
+  <div class="mensaje-inferior-derecha">
+    PAGO CONTRAENTREGA EN CÚCUTA
+  </div>
+<script>
+  const botones = document.querySelectorAll('.boton-whatsapp');
+  botones.forEach(boton => {
+    boton.addEventListener('click', () => {
+      const producto = boton.closest('.producto');
+      const imgSrc = producto.querySelector('img').src;
+      const descripcion = producto.querySelector('.descripcion').innerText;
+
+      const mensaje = `Hola, vi este producto en DARYMAKEUP y estoy interesado:\n\n🖼️ Imagen: ${imgSrc}\n📝 Descripción: ${descripcion}`;
+      const url = `https://wa.me/573222860592?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
+    });
+  });
+
+  const carrito = [];
+
+  function actualizarCarrito() {
+    const lista = document.getElementById('lista-carrito');
+    const totalTexto = document.getElementById('total');
+    lista.innerHTML = '';
+    let total = 0;
+
+    carrito.forEach((item, index) => {
+      total += item.precio * item.cantidad;
+
+      const li = document.createElement('li');
+      li.style.marginBottom = '10px';
+      li.style.display = 'flex';
+      li.style.alignItems = 'center';
+
+      const imagen = document.createElement('img');
+      imagen.src = item.imagen;
+      imagen.style.width = '40px';
+      imagen.style.height = '40px';
+      imagen.style.borderRadius = '4px';
+      imagen.style.marginRight = '8px';
+      imagen.style.cursor = 'pointer';
+      imagen.addEventListener('click', () => {
+        document.getElementById('imagen-ampliada').src = item.imagen;
+        document.getElementById('modal-imagen').style.display = 'flex';
+      });
+
+      const texto = document.createElement('span');
+      texto.textContent = `${item.nombre} - $${(item.precio * item.cantidad).toLocaleString()} `;
+
+      const inputCantidad = document.createElement('input');
+      inputCantidad.type = 'number';
+      inputCantidad.value = item.cantidad;
+      inputCantidad.min = 1;
+      inputCantidad.style.width = '40px';
+      inputCantidad.style.marginLeft = '5px';
+      inputCantidad.onchange = () => {
+        const nuevaCantidad = parseInt(inputCantidad.value);
+        if (nuevaCantidad > 0) {
+          item.cantidad = nuevaCantidad;
+          actualizarCarrito();
+        }
+      };
+
+      const eliminarBtn = document.createElement('button');
+      eliminarBtn.textContent = '❌';
+      eliminarBtn.onclick = () => quitarDelCarrito(index);
+      eliminarBtn.style.marginLeft = '10px';
+      eliminarBtn.style.color = 'red';
+      eliminarBtn.style.background = 'none';
+      eliminarBtn.style.border = 'none';
+      eliminarBtn.style.cursor = 'pointer';
+
+      li.appendChild(imagen);
+      li.appendChild(texto);
+      li.appendChild(inputCantidad);
+      li.appendChild(eliminarBtn);
+
+      lista.appendChild(li);
+    });
+
+    totalTexto.textContent = `Total: $${total.toLocaleString()}`;
+  }
+
+  function quitarDelCarrito(index) {
+    carrito.splice(index, 1);
+    actualizarCarrito();
+  }
+
+  function agregarAlCarrito(nombre, precio, cantidad = 1, imagen) {
+    const existente = carrito.find(p => p.nombre === nombre);
+    if (existente) {
+      existente.cantidad += cantidad;
+    } else {
+      carrito.push({ nombre, precio, cantidad, imagen });
+    }
+    actualizarCarrito();
+  }
+
+  function enviarWhatsApp() {
+    if (carrito.length === 0) return alert("El carrito está vacío.");
+
+    let mensaje = "¡Hola! Quiero comprar los siguientes productos en DARYMAKEUP:\n\n";
+    let total = 0;
+
+    carrito.forEach(item => {
+      const subtotal = item.precio * item.cantidad;
+      mensaje += `🛍️ ${item.nombre} x${item.cantidad} = $${subtotal.toLocaleString()}\n`;
+      total += subtotal;
+    });
+
+    mensaje += `\n💰 Total: $${total.toLocaleString()}`;
+    const url = `https://wa.me/573222860592?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+  }
+
+  function toggleCarrito() {
+    const carritoDiv = document.getElementById('carrito-flotante');
+    carritoDiv.style.display = (carritoDiv.style.display === 'none' || carritoDiv.style.display === '') ? 'block' : 'none';
+  }
+
+  // Configura cada producto
+  document.querySelectorAll('.producto').forEach(prod => {
+    const boton = prod.querySelector('.boton-whatsapp');
+    const nombre = prod.querySelector('.descripcion').innerText;
+    const precioTexto = prod.querySelector('.precio').innerText;
+    const precio = parseInt(precioTexto.replace(/\D/g, ''));
+    const imagenSrc = prod.querySelector('img').src;
+
+    // Campo cantidad
+    const cantidadInput = document.createElement('input');
+    cantidadInput.type = 'number';
+    cantidadInput.value = 1;
+    cantidadInput.min = 1;
+    cantidadInput.style.width = '50px';
+    cantidadInput.style.marginTop = '6px';
+
+    // Botón añadir al carrito
+    const botonCarrito = document.createElement('button');
+    botonCarrito.textContent = "Añadir al carrito";
+    botonCarrito.style.marginTop = "6px";
+    botonCarrito.style.marginLeft = "6px";
+    botonCarrito.style.padding = "6px 10px";
+    botonCarrito.style.borderRadius = "5px";
+    botonCarrito.style.border = "none";
+    botonCarrito.style.cursor = "pointer";
+    botonCarrito.style.backgroundColor = "#ff4081";
+    botonCarrito.style.color = "#fff";
+
+    botonCarrito.onclick = () => {
+      const cantidad = parseInt(cantidadInput.value);
+      if (cantidad > 0) {
+        agregarAlCarrito(nombre, precio, cantidad, imagenSrc);
+      }
+    };
+
+    const contenedorBotones = document.createElement('div');
+    contenedorBotones.style.marginTop = "8px";
+    contenedorBotones.appendChild(cantidadInput);
+    contenedorBotones.appendChild(botonCarrito);
+    prod.appendChild(contenedorBotones);
+
+    // Botón WhatsApp individual
+    boton.onclick = () => {
+      const mensaje = `Hola, vi este producto en DARYMAKEUP y estoy interesado:\n\n🖼️ Imagen: ${imagenSrc}\n📝 Descripción: ${nombre}\n💰 Precio: ${precioTexto}`;
+      const url = `https://wa.me/573222860592?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
+    };
+  });
+
+  // Mostrar la imagen ampliada al hacer click en galería
+  document.querySelectorAll('.producto img').forEach(imagen => {
+    imagen.addEventListener('click', () => {
+      document.getElementById('imagen-ampliada').src = imagen.src;
+      document.getElementById('modal-imagen').style.display = 'flex';
+    });
+  });
+
+  // Función para cerrar el modal
+  function cerrarModal() {
+    document.getElementById('modal-imagen').style.display = 'none';
+  }
+
+  // Cierra el modal al hacer clic fuera de la imagen
+  document.getElementById('modal-imagen').addEventListener('click', function(e) {
+    if (e.target === this) cerrarModal();
+  });
+</script>
+
+<!-- Ícono flotante del carrito -->
+<button onclick="toggleCarrito()" style="
+  position: fixed;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background-color: #ff4081;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  z-index: 9999;
+  cursor: pointer;
+">🛒</button>
+
+<!-- Contenedor del carrito (inicialmente oculto) -->
+<div id="carrito-flotante" style="
+  display: none;
+  position: fixed; 
+  top: 50%; 
+  right: 70px; 
+  background-color: #fff; 
+  color: #000; 
+  padding: 15px; 
+  border-radius: 10px; 
+  box-shadow: 0 0 10px rgba(255,255,255,0.3); 
+  max-width: 300px;
+  z-index: 9999;
+  transform: translateY(-50%);
+">
+  <h3>🛒 Carrito</h3>
+  <ul id="lista-carrito" style="list-style: none; padding: 0; max-height: 300px; overflow-y: auto;"></ul>
+  <p id="total">Total: $0</p>
+  <button onclick="enviarWhatsApp()" style="margin-top: 10px; background-color: #25D366; color: #fff; padding: 8px 12px; border: none; border-radius: 5px; cursor: pointer;">Comprar por WhatsApp</button>
+</div>
+
+<!-- Modal para imagen ampliada -->
+<div id="modal-imagen" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:99999;">
+  <span onclick="cerrarModal()" style="position:absolute; top:20px; right:30px; font-size:40px; color:#fff; cursor:pointer;">&times;</span>
+  <img id="imagen-ampliada" src="" style="max-width:90%; max-height:90%; border: 4px solid white; border-radius: 10px;">
+</div>
+
+</body>
+</html>

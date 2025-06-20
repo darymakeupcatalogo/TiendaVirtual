@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DARYMAKEUP</title>
+  <style>
+    /* Estilos generales */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 3rem;
+    }
+
+    /* Logo */
+    .logo {
+      margin: 20px 0;
+    }
+
+    .logo img {
+      width: 200px;
+      height: auto;
+    }
+
+    /* Contenedor de botones */
+    .button-container {
+      margin: 50px auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      max-width: 90%;
+    }
+
+    .button-container a {
+      flex: 1 1 200px;
+      max-width: 250px;
+      padding: 15px 20px;
+      background-color: #fff;
+      color: #000;
+      text-decoration: none;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .button-container a:hover {
+      background-color: #f0f0f0;
+      transform: scale(1.05);
+    }
+
+    /* Responsivo para pantallas pequeñas */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .logo img {
+        width: 150px;
+      }
+
+      .button-container a {
+        font-size: 1rem;
+        padding: 12px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>DARYMAKEUP</h1>
+
+  <div class="logo">
+    <img src="https://i.ibb.co/Z6gvWL0n/LOGO-MIO.jpg" alt="Logo de DARYMAKEUP">
+  </div>
+
+  <div class="button-container">
+    <a href="accesorios.html">Accesorios</a>
+    <a href="maquillaje.html">Maquillaje</a>
+    <a href="productos-naturales.html">Productos Naturales</a>
+    <a href="facial.html">Cuidado Facial</a>
+  </div>
+
+</body>
+</html>
