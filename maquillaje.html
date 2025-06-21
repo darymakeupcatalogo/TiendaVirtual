@@ -545,20 +545,11 @@ header h1 {
     PAGO CONTRAENTREGA EN CÚCUTA
   </div>
 <script>
-  const botones = document.querySelectorAll('.boton-whatsapp');
-  botones.forEach(boton => {
-    boton.addEventListener('click', () => {
-      const producto = boton.closest('.producto');
-      const imgSrc = producto.querySelector('img').src;
-      const descripcion = producto.querySelector('.descripcion').innerText;
+  const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-      const mensaje = `Hola, vi este producto en DARYMAKEUP y estoy interesado:\n\n🖼️ Imagen: ${imgSrc}\n📝 Descripción: ${descripcion}`;
-      const url = `https://wa.me/573222860592?text=${encodeURIComponent(mensaje)}`;
-      window.open(url, '_blank');
-    });
-  });
-
-  const carrito = [];
+  function guardarCarrito() {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+  }
 
   function actualizarCarrito() {
     const lista = document.getElementById('lista-carrito');
@@ -599,6 +590,7 @@ header h1 {
         const nuevaCantidad = parseInt(inputCantidad.value);
         if (nuevaCantidad > 0) {
           item.cantidad = nuevaCantidad;
+          guardarCarrito();
           actualizarCarrito();
         }
       };
@@ -616,7 +608,6 @@ header h1 {
       li.appendChild(texto);
       li.appendChild(inputCantidad);
       li.appendChild(eliminarBtn);
-
       lista.appendChild(li);
     });
 
@@ -625,6 +616,7 @@ header h1 {
 
   function quitarDelCarrito(index) {
     carrito.splice(index, 1);
+    guardarCarrito();
     actualizarCarrito();
   }
 
@@ -635,6 +627,7 @@ header h1 {
     } else {
       carrito.push({ nombre, precio, cantidad, imagen });
     }
+    guardarCarrito();
     actualizarCarrito();
   }
 
@@ -660,73 +653,75 @@ header h1 {
     carritoDiv.style.display = (carritoDiv.style.display === 'none' || carritoDiv.style.display === '') ? 'block' : 'none';
   }
 
-  // Configura cada producto
-  document.querySelectorAll('.producto').forEach(prod => {
-    const boton = prod.querySelector('.boton-whatsapp');
-    const nombre = prod.querySelector('.descripcion').innerText;
-    const precioTexto = prod.querySelector('.precio').innerText;
-    const precio = parseInt(precioTexto.replace(/\D/g, ''));
-    const imagenSrc = prod.querySelector('img').src;
+  // Configura productos al cargar
+  document.addEventListener('DOMContentLoaded', () => {
+    actualizarCarrito();
 
-    // Campo cantidad
-    const cantidadInput = document.createElement('input');
-    cantidadInput.type = 'number';
-    cantidadInput.value = 1;
-    cantidadInput.min = 1;
-    cantidadInput.style.width = '50px';
-    cantidadInput.style.marginTop = '6px';
+    document.querySelectorAll('.producto').forEach(prod => {
+      const boton = prod.querySelector('.boton-whatsapp');
+      const nombre = prod.querySelector('.descripcion').innerText;
+      const precioTexto = prod.querySelector('.precio').innerText;
+      const precio = parseInt(precioTexto.replace(/\D/g, ''));
+      const imagenSrc = prod.querySelector('img').src;
 
-    // Botón añadir al carrito
-    const botonCarrito = document.createElement('button');
-    botonCarrito.textContent = "Añadir al carrito";
-    botonCarrito.style.marginTop = "6px";
-    botonCarrito.style.marginLeft = "6px";
-    botonCarrito.style.padding = "6px 10px";
-    botonCarrito.style.borderRadius = "5px";
-    botonCarrito.style.border = "none";
-    botonCarrito.style.cursor = "pointer";
-    botonCarrito.style.backgroundColor = "#ff4081";
-    botonCarrito.style.color = "#fff";
+      const cantidadInput = document.createElement('input');
+      cantidadInput.type = 'number';
+      cantidadInput.value = 1;
+      cantidadInput.min = 1;
+      cantidadInput.style.width = '50px';
+      cantidadInput.style.marginTop = '6px';
 
-    botonCarrito.onclick = () => {
-      const cantidad = parseInt(cantidadInput.value);
-      if (cantidad > 0) {
-        agregarAlCarrito(nombre, precio, cantidad, imagenSrc);
-      }
-    };
+      const botonCarrito = document.createElement('button');
+      botonCarrito.textContent = "Añadir al carrito";
+      botonCarrito.style.marginTop = "6px";
+      botonCarrito.style.marginLeft = "6px";
+      botonCarrito.style.padding = "6px 10px";
+      botonCarrito.style.borderRadius = "5px";
+      botonCarrito.style.border = "none";
+      botonCarrito.style.cursor = "pointer";
+      botonCarrito.style.backgroundColor = "#ff4081";
+      botonCarrito.style.color = "#fff";
 
-    const contenedorBotones = document.createElement('div');
-    contenedorBotones.style.marginTop = "8px";
-    contenedorBotones.appendChild(cantidadInput);
-    contenedorBotones.appendChild(botonCarrito);
-    prod.appendChild(contenedorBotones);
+      botonCarrito.onclick = () => {
+        const cantidad = parseInt(cantidadInput.value);
+        if (cantidad > 0) {
+          agregarAlCarrito(nombre, precio, cantidad, imagenSrc);
+        }
+      };
 
-    // Botón WhatsApp individual
-    boton.onclick = () => {
-      const mensaje = `Hola, vi este producto en DARYMAKEUP y estoy interesado:\n\n🖼️ Imagen: ${imagenSrc}\n📝 Descripción: ${nombre}\n💰 Precio: ${precioTexto}`;
-      const url = `https://wa.me/573222860592?text=${encodeURIComponent(mensaje)}`;
-      window.open(url, '_blank');
-    };
-  });
+      const contenedorBotones = document.createElement('div');
+      contenedorBotones.style.marginTop = "8px";
+      contenedorBotones.appendChild(cantidadInput);
+      contenedorBotones.appendChild(botonCarrito);
+      prod.appendChild(contenedorBotones);
 
-  // Mostrar la imagen ampliada al hacer click en galería
-  document.querySelectorAll('.producto img').forEach(imagen => {
-    imagen.addEventListener('click', () => {
-      document.getElementById('imagen-ampliada').src = imagen.src;
-      document.getElementById('modal-imagen').style.display = 'flex';
+      // WhatsApp individual
+      boton.onclick = () => {
+        const mensaje = `Hola, vi este producto en DARYMAKEUP y estoy interesado:\n\n🖼️ Imagen: ${imagenSrc}\n📝 Descripción: ${nombre}\n💰 Precio: ${precioTexto}`;
+        const url = `https://wa.me/573222860592?text=${encodeURIComponent(mensaje)}`;
+        window.open(url, '_blank');
+      };
+    });
+
+    // Ampliar imagen galería
+    document.querySelectorAll('.producto img').forEach(imagen => {
+      imagen.addEventListener('click', () => {
+        document.getElementById('imagen-ampliada').src = imagen.src;
+        document.getElementById('modal-imagen').style.display = 'flex';
+      });
     });
   });
 
-  // Función para cerrar el modal
+  // Modal imagen
   function cerrarModal() {
     document.getElementById('modal-imagen').style.display = 'none';
   }
 
-  // Cierra el modal al hacer clic fuera de la imagen
   document.getElementById('modal-imagen').addEventListener('click', function(e) {
     if (e.target === this) cerrarModal();
   });
 </script>
+
 
   
 <!-- Ícono flotante del carrito -->
