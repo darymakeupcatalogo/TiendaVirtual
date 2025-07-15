@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <html lang="es-419">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DARYMAKEUP</title>
+  <link rel="icon" href="https://i.ibb.co/Z6gvWL0n/LOGO-MIO.jpg" type="image/jpeg">
   <style>
-    /* Estilos generales */
-    body {
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
       margin: 0;
       padding: 0;
+      min-height: 100vh;
       background-color: #000;
       color: #fff;
       font-family: 'Arial', sans-serif;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .contenido {
+      position: relative;
+      z-index: 10;
       text-align: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     h1 {
-      margin-top: 40px;
       font-size: 3rem;
+      margin-bottom: 20px;
     }
 
-    /* Logo */
     .logo {
       margin: 20px 0;
     }
@@ -30,34 +54,93 @@
       height: auto;
     }
 
-    /* Contenedor de botones */
     .button-container {
-      margin: 50px auto;
+      margin-top: 40px;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 20px;
       max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .button-container a {
       flex: 1 1 200px;
       max-width: 250px;
       padding: 15px 20px;
-      background-color: #fff;
-      color: #000;
+      background-color: rgba(0, 0, 0, 0.4);
+      background-size: cover;
+      background-position: center;
+      color: #fff;
       text-decoration: none;
       font-size: 1.2rem;
       border-radius: 8px;
-      transition: background-color 0.3s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: bold;
+      position: relative;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      z-index: 1;
+      min-height: 120px;
+      text-shadow: 1px 1px 4px #000;
     }
 
-    .button-container a:hover {
-      background-color: #f0f0f0;
-      transform: scale(1.05);
+    .bg-accesorios {
+      background-image: url('https://i.ibb.co/fdDLMzqh/accesorios.jpg');
     }
 
-    /* Responsivo para pantallas pequeñas */
+    .bg-maquillaje {
+      background-image: url('https://i.ibb.co/QFY8JHck/maquillaje.jpg');
+    }
+
+    .bg-corporal {
+      background-image: url('https://i.ibb.co/Q3R2SJpj/cuidado-corporal.jpg');
+    }
+
+    .bg-facial {
+      background-image: url('https://i.ibb.co/hRsyTJHs/cuidado-facial.jpg');
+    }
+
+    .bg-gorras {
+      background-image: url('https://i.ibb.co/93VQqzNm/gorras.webp');
+    }
+
+    .button-container a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 8px;
+      opacity: 1;
+      z-index: -1;
+      transition: 0.3s;
+    }
+
+    .button-container a:hover::before {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .mensaje-inferior-derecha {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #111;
+      color: gold;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: 'Arial', sans-serif;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+      z-index: 1000;
+    }
+
     @media (max-width: 600px) {
       h1 {
         font-size: 2rem;
@@ -76,18 +159,87 @@
 </head>
 <body>
 
-  <h1>DARYMAKEUP</h1>
+  <canvas id="canvas"></canvas>
 
-  <div class="logo">
-    <img src="https://i.ibb.co/Z6gvWL0n/LOGO-MIO.jpg" alt="Logo de DARYMAKEUP">
+  <div class="contenido">
+    <h1>DARYMAKEUP</h1>
+
+    <div class="logo">
+      <img src="https://i.ibb.co/fPqgNNr/LOGO-MIO.png" alt="Logo de DARYMAKEUP">
+    </div>
+
+    <div class="button-container">
+      <a href="accesorios.html" class="bg-accesorios">Accesorios</a>
+      <a href="maquillaje.html" class="bg-maquillaje">Maquillaje</a>
+      <a href="corporal.html" class="bg-corporal">Cuidado Corporal</a>
+      <a href="facial.html" class="bg-facial">Facial</a>
+      <a href="gorras.html" class="bg-gorras">Gorras</a>
+    </div>
   </div>
 
-  <div class="button-container">
-    <a href="accesorios.html">Accesorios</a>
-    <a href="maquillaje.html">Maquillaje</a>
-    <a href="productos-naturales.html">Productos Naturales</a>
-    <a href="facial.html">Cuidado Facial</a>
+  <div class="mensaje-inferior-derecha">
+    PAGO CONTRAENTREGA EN CÚCUTA
   </div>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const stars = [];
+
+    function createStar() {
+      return {
+        x: Math.random() * canvas.width,
+        y: -10,
+        size: Math.random() * 2 + 1,
+        speed: Math.random() * 2 + 1,
+        length: Math.random() * 60 + 30,
+        opacity: Math.random() * 0.8 + 0.2
+      };
+    }
+
+    function drawStar(star) {
+      const grad = ctx.createLinearGradient(star.x, star.y, star.x + star.length, star.y + star.length);
+      grad.addColorStop(0, `rgba(255, 215, 0, ${star.opacity})`);
+      grad.addColorStop(1, `rgba(255, 215, 0, 0)`);
+      ctx.beginPath();
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = star.size;
+      ctx.moveTo(star.x, star.y);
+      ctx.lineTo(star.x + star.length, star.y + star.length);
+      ctx.stroke();
+    }
+
+    function updateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (stars.length < 80 && Math.random() < 0.2) {
+        stars.push(createStar());
+      }
+
+      for (let i = stars.length - 1; i >= 0; i--) {
+        const star = stars[i];
+        drawStar(star);
+        star.x += star.speed;
+        star.y += star.speed;
+        if (star.y > canvas.height || star.x > canvas.width) {
+          stars.splice(i, 1);
+        }
+      }
+
+      requestAnimationFrame(updateStars);
+    }
+
+    updateStars();
+  </script>
 
 </body>
 </html>
