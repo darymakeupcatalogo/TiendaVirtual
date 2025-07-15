@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DARYMAKEUP</title>
   <link rel="icon" href="https://i.ibb.co/Z6gvWL0n/LOGO-MIO.jpg" type="image/jpeg">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
   <style>
     * {
       box-sizing: border-box;
@@ -71,7 +69,9 @@
       flex: 1 1 200px;
       max-width: 250px;
       padding: 15px 20px;
-      background-color: transparent;
+      background-color: rgba(0, 0, 0, 0.4);
+      background-size: cover;
+      background-position: center;
       color: #fff;
       text-decoration: none;
       font-size: 1.2rem;
@@ -85,6 +85,28 @@
       transition: all 0.3s ease;
       overflow: hidden;
       z-index: 1;
+      min-height: 120px;
+      text-shadow: 1px 1px 4px #000;
+    }
+
+    .bg-accesorios {
+      background-image: url('https://i.ibb.co/fdDLMzqh/accesorios.jpg');
+    }
+
+    .bg-maquillaje {
+      background-image: url('https://i.ibb.co/QFY8JHck/maquillaje.jpg');
+    }
+
+    .bg-corporal {
+      background-image: url('https://i.ibb.co/Q3R2SJpj/cuidado-corporal.jpg');
+    }
+
+    .bg-facial {
+      background-image: url('https://i.ibb.co/hRsyTJHs/cuidado-facial.jpg');
+    }
+
+    .bg-gorras {
+      background-image: url('https://i.ibb.co/93VQqzNm/gorras.webp');
     }
 
     .button-container a::before {
@@ -94,19 +116,15 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border: 2px solid #fff;
+      background-color: rgba(0, 0, 0, 0.4);
       border-radius: 8px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      opacity: 1;
       z-index: -1;
+      transition: 0.3s;
     }
 
     .button-container a:hover::before {
-      opacity: 1;
-    }
-
-    .button-container a i {
-      font-size: 1.5rem;
+      background-color: rgba(0, 0, 0, 0.7);
     }
 
     .mensaje-inferior-derecha {
@@ -150,13 +168,13 @@
       <img src="https://i.ibb.co/fPqgNNr/LOGO-MIO.png" alt="Logo de DARYMAKEUP">
     </div>
 
-      <div class="button-container">
-       <a href="accesorios.html"><i class='bx bx-gift'></i> Accesorios</a>
-       <a href="maquillaje.html"><i class='bx bx-brush'></i> Maquillaje</a>
-       <a href="corporal.html"><i class='bx bx-leaf'></i> Cuidado Corporal</a>
-       <a href="facial.html"><i class='bx bx-face'></i> Facial</a>
-       <a href="gorras.html"><i class='bx bx-cool'></i> Gorras</a>
-  </div>
+    <div class="button-container">
+      <a href="accesorios.html" class="bg-accesorios">Accesorios</a>
+      <a href="maquillaje.html" class="bg-maquillaje">Maquillaje</a>
+      <a href="corporal.html" class="bg-corporal">Cuidado Corporal</a>
+      <a href="facial.html" class="bg-facial">Facial</a>
+      <a href="gorras.html" class="bg-gorras">Gorras</a>
+    </div>
   </div>
 
   <div class="mensaje-inferior-derecha">
@@ -225,3 +243,4 @@
 
 </body>
 </html>
+
