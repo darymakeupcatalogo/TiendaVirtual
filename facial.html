@@ -161,7 +161,21 @@
       font-size: 0.9rem;
     ">⬅ Volver al inicio</a>
   </section>
-
+<!-- 🔍 Buscador de productos -->
+<div style="margin: 20px auto; text-align:center;">
+  <input 
+    type="text" 
+    id="buscador" 
+    placeholder="Buscar productos..." 
+    style="
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      border: 2px solid #C8A2C8;
+      border-radius: 8px;
+      font-size: 1rem;
+    ">
+</div>
   <section class="galeria">
     <!-- Producto 1 -->
     <div class="producto">
@@ -584,6 +598,34 @@
         document.getElementById('modal-imagen').style.display = 'flex';
       });
     });
+
+    // 🔍 Buscador de productos
+    const buscador = document.getElementById("buscador");
+    if (buscador) {
+      const mensajeNoResultados = document.createElement("p");
+      mensajeNoResultados.id = "no-resultados";
+      mensajeNoResultados.textContent = "❌ No se encontraron productos";
+      mensajeNoResultados.style.textAlign = "center";
+      mensajeNoResultados.style.marginTop = "15px";
+      mensajeNoResultados.style.display = "none";
+      document.querySelector(".galeria").after(mensajeNoResultados);
+
+      buscador.addEventListener("input", function() {
+        const filtro = this.value.toLowerCase();
+        let encontrados = 0;
+        document.querySelectorAll(".producto").forEach(producto => {
+          const descripcion = producto.querySelector(".descripcion").innerText.toLowerCase();
+          const precio = producto.querySelector(".precio").innerText.toLowerCase();
+          if (descripcion.includes(filtro) || precio.includes(filtro)) {
+            producto.style.display = "flex";
+            encontrados++;
+          } else {
+            producto.style.display = "none";
+          }
+        });
+        mensajeNoResultados.style.display = encontrados === 0 ? "block" : "none";
+      });
+    }
   });
 
   // Modal imagen
@@ -595,6 +637,7 @@
     if (e.target === this) cerrarModal();
   });
 </script>
+
 
 
 
